@@ -19,16 +19,3 @@ resource "google_storage_bucket" "gcp-test-bucket3" {
   location = "europe-central2"
 }
 
-resource "random_pet" "random_pet_name" {
-  prefix = "bater-wucket"
-  length = 1
-}
-
-output "radomanimal" {
-  value = random_pet.random_pet_name
-}
-
-resource "google_storage_bucket" "gcp-test-bucket4" {
-  name     = random_pet.random_pet_name.id
-  location = "europe-central2"
-}
