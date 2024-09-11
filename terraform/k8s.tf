@@ -10,15 +10,11 @@ resource "google_container_cluster" "primary" {
   name                = "bava-lucket-k8s-cluster"
   location            = "europe-central2"
   deletion_protection = false
-
-  initial_node_count = 1
-
-  node_config {
-    machine_type = "e2-micro"
-  }
+  initial_node_count = 0
 }
 
 resource "google_container_node_pool" "primary_nodes" {
+  name       = "gcp-test-docker-node-pool"
   cluster    = google_container_cluster.primary.name
   location   = google_container_cluster.primary.location
   node_count = 2
