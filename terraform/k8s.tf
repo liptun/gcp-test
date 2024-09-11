@@ -77,27 +77,3 @@ resource "kubernetes_service" "gcp_test_docker_service" {
     type = "NodePort" # Keeping the type NodePort for external access
   }
 }
-
-resource "kubernetes_ingress" "gcp_test_docker_ingress" {
-  metadata {
-    name = "gcp-test-docker-ingress" # Updated ingress name
-    annotations = {
-      "kubernetes.io/ingress.class" = "gce" # Using GCE as the ingress controller
-    }
-  }
-
-  spec {
-    backend {
-      service_name = kubernetes_service.gcp_test_docker_service.metadata[0].name
-      service_port = 80
-    }
-    rule {
-      host = google_container_cluster.primary.endpoint
-      http {
-        path {
-          path = "/"
-        }
-      }
-    }
-  }
-}

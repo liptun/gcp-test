@@ -16,7 +16,7 @@ variable "services" {
     "compute.googleapis.com",
     "storage.googleapis.com",
     "run.googleapis.com",
-    "container.googleapis.com"
+    "container.googleapis.com",
   ]
 }
 
