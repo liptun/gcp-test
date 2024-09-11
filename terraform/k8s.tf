@@ -54,7 +54,7 @@ resource "kubernetes_deployment" "gcp_test_docker" {
       }
       spec {
         container {
-          image = var.docker_image_full_url
+          image = local.docker_image_full_url
           name  = "gcp-test-docker-container"
           port {
             container_port = 3000  # The container is still running on port 3000
